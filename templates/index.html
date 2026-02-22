@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Swiggy Churn Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Swiggy Customer Churn Prediction</h1>
+        <form action="/predict" method="post">
+            <input type="number" name="total_orders" placeholder="Total Orders" required>
+            <input type="number" name="total_revenue" placeholder="Total Revenue" required>
+            <input type="number" name="avg_order_value" placeholder="Average Order Value" required>
+            <input type="number" name="gender" placeholder="Gender (0=Female,1=Male)" required>
+            <input type="number" name="age" placeholder="Age" required>
+            <button type="submit">Predict Risk</button>
+        </form>
+    </div>
+</body>
+</html>

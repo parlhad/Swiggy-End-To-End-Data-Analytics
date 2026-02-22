@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="card">
+    <h2>📊 Prediction Result</h2>
+
+    <p><strong>Churn Probability:</strong> {{ probability }}%</p>
+
+    <p><strong>Risk Level:</strong></p>
+    <p>{{ risk_level }}</p>
+
+    <p><strong>Recommended Action:</strong></p>
+    <p style="white-space: pre-line;">
+        {{ recommended_action }}
+    </p>
+
+    <br>
+    <a href="/">Go Back</a>
+</div>
+
+</body>
+</html>
