@@ -1,0 +1,12 @@
+__pycache__
+*.pyc
+.ipynb_checkpoints
+.git
+venv
+.gitignore
+notebooks
+Data
+Dashboard
+SQl
+*.csv
+*.ipynb

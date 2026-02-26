@@ -7,24 +7,26 @@ Designed a Swiggy-themed Power BI dashboard to analyze sales, user activity, and
 
 ---
 
-
+# Churn Live Model
+** Live Churn Predictor Model **
+[Click here to view the Live Churn Predictor ]https://swiggy-end-to-end-data-analytics.onrender.com)
 
 ## 🖼️ Dashboard Previews
 
 ### 🔹 1. Overview  
-![Overview](Overviewr.png)
+![Overview](Dashboard/Dashboard_IMG/Overviewr.png)
 
 ### 🔹 2. User Performance  
-![User Performance](User%20Performance.png)
+![User Performance](Dashboard/Dashboard_IMG/User%20Performance.png)
 
 ### 🔹 3. City Overview  
-![City Overview](City%20Overview.png)
+![City Overview](Dashboard/Dashboard_IMG/City%20Overview.png)
 
 ### 🔹 4. Restaurant Analysis  
-![Restaurant Analysis](Restaurant%20Analysis.png)
+![Restaurant Analysis](Dashboard/Dashboard_IMG/Restaurant%20Analysis.png)
 
 ### 🔹 5. Insights  
-![Insights](Insights.png)
+![Insights](Dashboard/Dashboard_IMG/Insights.png)
 
 ## 📊 Project Overview
 
