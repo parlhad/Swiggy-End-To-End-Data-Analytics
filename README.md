@@ -1262,11 +1262,11 @@ Extremely high churn — retention is priority.
 
 | Model | ROC AUC |
 |---------|---------|
-| Logistic Regression | 0.72 |
-| Random Forest | 0.74 |
-| XGBoost | 0.76 |
+| Logistic Regression | 0.66 |
+| Random Forest | 0.85 |
+| XGBoost | 0.72 |
 
-🏆 Best Model: XGBoost (Notebook Phase)
+🏆 Best Model: Random Forest (Notebook Phase)
 
 Later production optimization selected Random Forest (AUC 0.91 after feature engineering refinement).
 
