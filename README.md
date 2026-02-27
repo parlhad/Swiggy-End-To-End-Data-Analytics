@@ -3,15 +3,6 @@
 Designed a Swiggy-themed Power BI dashboard to analyze sales, user activity, and restaurant performance. Used Power Query and DAX to clean data, create KPIs, and deliver interactive visual insights.
 # Swiggy-Themed Power BI Dashboard – Sales & Restaurant Insights
 
-🚀 **Live Dashboard:**  
-[Click here to view the Power BI report](https://app.powerbi.com/view?r=eyJrIjoiOTNiNjg4MTQtY2VmOC00YmNiLTk3YmYtODYzN2ViN2YxMDM4IiwidCI6ImY5YTQzODQwLWY3OGUtNDE3Yy05ZDgwLTg5NTJhMmJhN2Y0YiJ9)
-
----
-
-# Churn Live Model
-** Live Churn Predictor Model **
-[Click here to view the Live Churn Predictor ]https://swiggy-end-to-end-data-analytics.onrender.com)
-
 
 # 📊 Business Problem Statement
 
@@ -39,7 +30,16 @@ This project is a comprehensive end-to-end data analytics pipeline built on a mu
 * **Identify** and quantify churn behavior (87.76% churn rate).
 * **Build** a predictive model using XGBoost and Random Forest.
 * **Deploy** the model as a production-ready web application via Render.
+---
 
+🚀 **Live Dashboard:**  
+[Click here to view the Power BI report](https://app.powerbi.com/view?r=eyJrIjoiOTNiNjg4MTQtY2VmOC00YmNiLTk3YmYtODYzN2ViN2YxMDM4IiwidCI6ImY5YTQzODQwLWY3OGUtNDE3Yy05ZDgwLTg5NTJhMmJhN2Y0YiJ9)
+
+---
+
+# Churn Live Model
+** Live Churn Predictor Model **
+[Click here to view the Live Churn Predictor ]https://swiggy-end-to-end-data-analytics.onrender.com)
 ---
 
 ## 🖼️ Dashboard Previews
