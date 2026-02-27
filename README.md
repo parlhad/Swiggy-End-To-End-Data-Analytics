@@ -922,6 +922,414 @@ This SQL analysis demonstrates full end-to-end business intelligence capability,
 
 ---
 
+# 🧠 Swiggy Customer Churn Analysis & Machine Learning (Python)
+
+This section documents the complete chronological reconstruction of the Jupyter Notebook:
+
+**`Swiggy Churn Analysis And ML.ipynb`**
+
+It includes:
+- Data preprocessing
+- Statistical EDA
+- RFM segmentation
+- Churn calculation
+- Hypothesis testing
+- Machine learning modeling
+- Business insights & decisions
+
+---
+
+# 📦 Phase 1: Setup & Data Preprocessing
+
+## 🔹 Initial Setup
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+```
+
+### Data Loaded:
+- Users.csv
+- Restaurant.csv
+- Orders.csv
+- Menu.csv
+- Food.csv
+
+⚠️ Initial `FileNotFoundError` resolved by correcting file paths.
+
+---
+
+## 🔹 Data Cleaning
+
+### Users Table
+
+```python
+users['Occupation'].fillna("Unknown", inplace=True)
+```
+
+✔ Filled missing occupation values.
+
+---
+
+### Restaurant Table – Rating Cleaning
+
+```python
+restaurants['Rating'] = restaurants['Rating'].replace('--', np.nan)
+restaurants['Rating'] = pd.to_numeric(restaurants['Rating'])
+```
+
+✔ Converted ratings to numeric format.
+
+---
+
+### Rating Count Mapping
+
+```python
+mapping = {'1K+ ratings':1000, '5K+ ratings':5000}
+restaurants['Rating_count_numeric'] = restaurants['Rating_count'].map(mapping)
+```
+
+✔ Converted categorical rating counts to numeric.
+
+---
+
+### Orders Table Cleaning
+
+```python
+orders = orders[orders['Sales_amount'] > 0]
+orders['order_date'] = pd.to_datetime(orders['order_date'])
+```
+
+✔ Removed negative/invalid sales  
+✔ Converted date to datetime
+
+---
+
+# 📊 Phase 2: Exploratory Data Analysis (EDA)
+
+---
+
+## 🔎 Q1: Is Revenue Growing or Volatile?
+
+```python
+monthly = df.groupby(df['order_date'].dt.to_period('M'))['Sales_amount'].sum()
+monthly.describe()
+```
+
+### 📌 Output
+
+- Mean Monthly Revenue: ₹29,219,978
+- Std Dev: ₹5.38M
+- Peak: Jan 2018 (~₹5 Cr)
+- Lowest: June 2020
+- CV ≈ 18.5%
+
+### 💡 Insights
+
+- Revenue swings between +38% and -36%.
+- Business shows noticeable volatility.
+- Growth is not consistent.
+
+---
+
+## 🔎 Q2: Is Revenue Distribution Skewed?
+
+```python
+df['Sales_amount'].skew()
+df['Sales_amount'].kurtosis()
+```
+
+### 📌 Output
+
+- Skewness: 18.36
+- Kurtosis: 569.97
+
+### 💡 Insights
+
+- Extremely heavy-tailed distribution.
+- Few large premium orders drive revenue.
+- Business is vulnerable to loss of high spenders.
+
+---
+
+## 🔎 Q3: Which Cities Are Dominant?
+
+Grouped revenue by City:
+
+Premium Cities:
+- Sirsi
+- Tirupati
+- Srikakulam
+
+Stable Cities:
+- Kovilpatti
+- Orai
+- Osmanabad
+
+### 💡 Decision
+
+- Retention strategy in premium cities.
+- Volume scaling in mass-market cities.
+
+---
+
+## 🔎 Q4: Customer Lifetime Value (CLV)
+
+```python
+clv = df.groupby('User_id')['Sales_amount'].sum()
+clv.describe()
+```
+
+### 📌 Output
+
+- Mean CLV: ₹12,484.74
+- Median CLV: ₹1,921.00
+
+### 💡 Insights
+
+- 20% customers generate ~80% revenue.
+- Large gap between mean and median confirms inequality.
+
+---
+
+## 🔎 Q5: Age vs Spending Correlation
+
+```python
+df[['Age','Sales_amount']].corr()
+```
+
+### 📌 Output
+
+- Correlation ≈ 0
+
+### 💡 Insight
+
+Age is NOT predictive of spending behavior.
+
+---
+
+## 🔎 Q6: Rating vs Revenue
+
+```python
+df[['Rating_count_numeric','Sales_amount']].corr()
+```
+
+### 📌 Output
+
+- Correlation = -0.0019
+
+### 💡 Insight
+
+Higher ratings do not guarantee higher revenue.
+
+---
+
+## 🔎 Q7: Order Frequency Distribution
+
+```python
+orders_per_user = df.groupby('User_id').size()
+orders_per_user.describe()
+```
+
+### 📌 Output
+
+- Mean Orders: 2.4
+- Median Orders: 2
+
+### 💡 Insight
+
+Most customers order 1–2 times and churn.
+
+---
+
+## 🔎 Q8: Recency vs Revenue
+
+```python
+correlation = df[['Recency_days','Total_Revenue']].corr()
+```
+
+### 📌 Output
+
+- Correlation = -0.0673
+
+### 💡 Insight
+
+Weak negative relationship.
+
+---
+
+# 🚨 Phase 3: Churn Analysis & RFM
+
+---
+
+## 🔎 Q9: Active vs Churned Users
+
+Churn defined as 90-day inactivity.
+
+### 📌 Output
+
+Active Users:
+- Avg Orders: 2.42
+- Avg Revenue: ₹16,414
+
+Churned Users:
+- Avg Orders: 1.83
+- Avg Revenue: ₹11,936
+
+### 💡 Insight
+
+Higher frequency & spending reduce churn risk.
+
+---
+
+## 🔎 Q10: T-Test (Statistical Significance)
+
+```python
+from scipy.stats import ttest_ind
+```
+
+### 📌 Output
+
+- P-value = 0.0
+
+### 💡 Insight
+
+Behavior differences between active and churned users are statistically significant.
+
+---
+
+## 🔎 Q11: Feature Correlation with Churn
+
+Top Predictor:
+
+- Recency (+0.516)
+
+Negative Predictors:
+- Total Orders
+- Total Revenue
+
+### 💡 Insight
+
+Recency is strongest churn driver.
+
+---
+
+## 🔎 Q12: RFM Segmentation
+
+Segments Created:
+
+| Segment | % |
+|----------|------|
+| Champions | ~15% |
+| Loyal | ~40% |
+| Potential Loyalists | ~28% |
+| At Risk | ~17% |
+
+### 💡 Strategic Insight
+
+- 55% are strong base.
+- 28% growth opportunity.
+- 17% reactivation focus.
+
+---
+
+## 🔎 Q13: Overall Churn Rate
+
+```python
+churn_rate = churned_users / total_users * 100
+```
+
+### 📌 Output
+
+- Churn Rate: 87.76%
+- Active Users: 9,457
+- Churned Users: 67,778
+
+### 💡 Insight
+
+Extremely high churn — retention is priority.
+
+---
+
+# 🤖 Phase 4: Machine Learning Model
+
+---
+
+## Model Comparison (ROC AUC)
+
+| Model | ROC AUC |
+|---------|---------|
+| Logistic Regression | 0.72 |
+| Random Forest | 0.74 |
+| XGBoost | 0.76 |
+
+🏆 Best Model: XGBoost (Notebook Phase)
+
+Later production optimization selected Random Forest (AUC 0.91 after feature engineering refinement).
+
+---
+
+## Feature Importance
+
+1. Recency
+2. Total Orders
+3. Avg Order Value
+4. Total Revenue
+
+---
+
+## Final Model Saved
+
+```python
+import joblib
+joblib.dump(model, 'random_forest_churn.pkl')
+```
+
+---
+
+# 🎯 Final Business Decisions
+
+## 🔴 High Risk
+- 30% discount coupon
+- Free delivery
+- Push notification
+
+## 🟠 Medium Risk
+- 15% discount
+- Personalized recommendations
+
+## 🟢 Low Risk
+- Swiggy One promotion
+- Reward points
+- Referral incentives
+
+---
+
+# 🚀 Deployment
+
+- Flask Backend
+- Dockerized
+- Gunicorn Production Server
+- Cloud Deployment (Render)
+
+Live App:
+👉 https://swiggy-end-to-end-data-analytics.onrender.com/
+
+---
+
+# 🏆 Final Strategic Conclusion
+
+Swiggy’s biggest business issue is not acquisition.
+
+It is retention.
+
+Reducing churn by even 10% could stabilize revenue significantly and improve long-term profitability.
+
+---
+
 
 
 ## 📮 Contact
