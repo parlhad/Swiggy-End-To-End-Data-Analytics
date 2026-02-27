@@ -164,15 +164,7 @@ PowerBI_Swiggy_Dashboard/
 └── 📄 Dataset.xlsx                       # Excel dataset used in dashboard
 
 ```
-# 🍕 Food Delivery End-to-End SQL Analysis & Business Insights
-
-## 📌 Project Overview
-
-This project analyzes 148,575 orders generating a total revenue of ₹963,829,620.  
-The objective is to evaluate business performance, identify revenue drivers, measure customer retention, and uncover operational risks using advanced SQL analytics.
-
----
-
+# SQL 
 # 📊 Core Business Metrics (Q1–Q10)
 
 ---
