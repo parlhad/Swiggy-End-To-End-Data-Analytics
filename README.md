@@ -1301,26 +1301,36 @@ joblib.dump(model, 'random_forest_churn.pkl')
 
 ---
 
-# 🚀 Deployment
-
-- Flask Backend
-- Dockerized
-- Gunicorn Production Server
-- Cloud Deployment (Render)
-
-Live App:
-👉 https://swiggy-end-to-end-data-analytics.onrender.com/
+# 🚀 . Deployment Architecture
+* **Backend:** Flask
+* **Server:** Gunicorn
+* **Environment:** Docker Containerization
+* **Cloud Hosting:** Render
+* **Live URL:** [https://swiggy-end-to-end-data-analytics.onrender.com/](https://swiggy-end-to-end-data-analytics.onrender.com/)
 
 ---
 
-# 🏆 Final Strategic Conclusion
+## 🎯  Business Recommendations
+* **🔴 High Risk (At Risk):** Deploy 30% discount coupons and free delivery via push notifications.
+* **🟠 Medium Risk (Potential Loyalists):** Personalized recommendations and 15% limited-time offers.
+* **🟢 Low Risk (Champions):** Promote "Swiggy One" and referral reward points.
 
-Swiggy’s biggest business issue is not acquisition.
+---
 
-It is retention.
+## 🏆  Final Strategic Conclusion
+The data proves that Swiggy’s main challenge is **retention**, not acquisition. Revenue depends heavily on a small 20% segment. By utilizing the **XGBoost churn model**, Swiggy can transition from reactive to proactive marketing, significantly stabilizing monthly revenue.
 
-Reducing churn by even 10% could stabilize revenue significantly and improve long-term profitability.
+---
 
+## 💼  Technical Skills Demonstrated
+* **SQL:** Advanced joins, aggregations, and business logic.
+* **Power BI:** DAX, interactive KPI dashboards, and spatial mapping.
+* **Python:** EDA, statistical hypothesis testing (T-tests), and RFM modeling.
+* **Machine Learning:** Classification, ROC AUC optimization, and feature importance.
+* **Deployment:** Docker, Flask, and Cloud Hosting.
+
+---
+© 2026 Pralhad | [Portfolio](https://github.com/parlhad)
 ---
 
 
