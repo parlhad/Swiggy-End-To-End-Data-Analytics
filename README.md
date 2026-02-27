@@ -12,6 +12,19 @@ Designed a Swiggy-themed Power BI dashboard to analyze sales, user activity, and
 ** Live Churn Predictor Model **
 [Click here to view the Live Churn Predictor ]https://swiggy-end-to-end-data-analytics.onrender.com)
 
+
+## 📘  Executive Summary
+This project is a comprehensive end-to-end data analytics pipeline built on a multi-table Swiggy-style food delivery dataset. 
+
+**The objective was to:**
+* **Understand** revenue behavior and volatility.
+* **Analyze** customer purchasing patterns and the 80/20 rule.
+* **Identify** and quantify churn behavior (87.76% churn rate).
+* **Build** a predictive model using XGBoost and Random Forest.
+* **Deploy** the model as a production-ready web application via Render.
+
+---
+
 ## 🖼️ Dashboard Previews
 
 ### 🔹 1. Overview  
