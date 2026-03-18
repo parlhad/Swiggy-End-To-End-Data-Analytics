@@ -5,7 +5,6 @@ Designed a Swiggy-themed Power BI dashboard to analyze sales, user activity, and
 
 
 # 📊 Business Problem Statement
-
 Swiggy operates in a highly competitive and fast-paced food delivery market where customer loyalty is low and operational costs are high. The business faces five core challenges that this project aims to solve:
 
 Revenue Volatility: Frequent and unpredictable fluctuations in monthly revenue make long-term financial planning and scaling difficult.
@@ -18,7 +17,7 @@ Uneven Geographic Performance: Sharp differences in purchasing behavior between 
 
 Ineffective Retention Targeting: Without predictive data, the marketing team cannot distinguish between a user who is just busy and a user who is about to leave the platform forever.
 
-# Core Objective
+Core Objective
 The goal of this project is to transition Swiggy from a reactive business (reacting after customers leave) to a proactive business. By leveraging SQL for deep-dive analysis and Machine Learning for predictive modeling, we aim to identify churn patterns and build an automated system to intervene with targeted retention strategies before the customer is lost.
 
 ## 📘  Executive Summary
